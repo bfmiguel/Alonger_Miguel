@@ -6,9 +6,15 @@ from django.http import HttpResponse
 def crear_curso(request):
     curso = Curso(nombre= "python", camada="47785")
     curso.save()
+    contexto= {"curso": curso}
+    return render(request, 'index.html', contexto)
+
+def show_html(request):
+    curso = Curso.objects.all()
+    contexto = {"curso": curso}
+    return render(request, 'index.html', contexto)
 
 
-    return HttpResponse(f"Sr curso es {curso.nombre} camada {curso.camada}")
 
 """
 tambien puedo hacer 
