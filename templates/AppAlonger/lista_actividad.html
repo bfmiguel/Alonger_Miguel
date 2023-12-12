@@ -3,14 +3,14 @@
 {% block cambio %}
 
 <div>
-    <form action="/app/buscar" method="get">
+    <form action="/app/buscar" method="GET">
 
-        {{ form.as_p}}
+        <input type="text" name="nombre">
 
         <input type="submit" value="Buscar">
     </form>
 </div>
-    {% for curso in cursos %}
+    {% for curso in object_list %}
     <h6>El curso es {{curso.nombre}} y camada {{curso.camada}}</h6>
     <hr>
     {% endfor %}

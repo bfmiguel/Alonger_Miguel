@@ -20,5 +20,6 @@ from AppAlonger.views import crear_curso
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', include('AppAlonger.urls'))
+    path('app/', include('AppAlonger.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
