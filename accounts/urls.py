@@ -1,7 +1,6 @@
 
 from django.contrib.auth.views import LogoutView
 from django.urls import path
-from AppAlonger.views import crear_curso, show_html, mostrar_cursos, agregar_actividad_form, buscar_actividad
 from accounts.views import loging_request, register_request
 
 urlpatterns = [

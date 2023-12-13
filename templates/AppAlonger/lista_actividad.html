@@ -10,9 +10,23 @@
         <input type="submit" value="Buscar">
     </form>
 </div>
-    {% for curso in object_list %}
-    <h6>El curso es {{curso.nombre}} y camada {{curso.camada}}</h6>
+
+<p>
+    <a href="{% url 'crear' %}">Crear</a>
+</p>
+    {% for lista in object_list %}
+    <h6>Su actividad realizada fue: {{Actividad.nombre}} en la empresa {{Actividad.empresa}}</h6>
+    
+
+    <p>
+        <a href="{% url 'detalle' actividad.id %} ">Detalles</a>
+    </p>
+
+    <p>
+        <a href="{% url 'actualizar' Actividad.id %} ">Actualizar</a>
+    </p>
     <hr>
+
     {% endfor %}
 
 

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<p>La actividad es:  <b>{{Actividad.nombre}}</b> </p>
+<p> es de tipo: {{Actividad.tipo}}</p>
+<p>de la empresa: {{Actividad.empresa}} </p>
+
+<p>
+    <a href="{% url 'listas' %}">Ver las actividades</a>
+    
+</p>
+
+
+
+{% endblock %}

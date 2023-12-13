@@ -1,65 +1,45 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from AppAlonger.models import  Actividad
 
-from AppAlonger.models import Curso
-from AppAlonger.forms import agregar_actividad, buscar_actividad_form
-from django.http import HttpResponse
 # Create your views here.
 
 
 class lista_actividad(ListView):
-    model = Curso
-    template_name = "templates/lista_actividad.html"
+    model = Actividad
+    template_name = "AppAlonger/lista_actividad.html"
 
 
+class detalle_actividad(DetailView):
+    model = Actividad
+    template_name = "AppAlonger/detalle_actividad.html"
+
+class crear_actividad(CreateView):
+    model = Actividad
+    success_url = "/app/actividad/lista"
+    template_name = "/app/agregar_actividad.html"
+    fields = ["nombre", "tipo", "empresa"]
 
 
-def mostrar_cursos(request):
-    cursos = Curso.objects.all()
+class actualizar_actividad(UpdateView):
+    model = Actividad
+    success_url = "/app/actividad/lista"
+    template_name = "/app/agregar_actividad.html"
+    fields = ["nombre", "tipo", "empresa"]
+
+
+def ver_actividad(request):
+    actividad = Actividad.objects.all
     contexto = {
-        "cursos": cursos,
-        "form": buscar_actividad_form(),
-    }
-    return render(request, "AppAlonger/cursos.html", contexto)
-
-def crear_curso(request):
-    curso = Curso(nombre= "python", camada="47785")
-    curso.save()
-    return redirect("/app/cursos/")
-
-def agregar_actividad_form(request):
-
-    if request.method == "POST":
-
-        agregar_actividad_new = agregar_actividad(request.POST)
-        if agregar_actividad_new.is_valid():
-            datos_agregados = agregar_actividad_new.cleaned_data
-
-            actividad = Curso(nombre = datos_agregados["nombre"], camada = datos_agregados["camada"])
-            actividad.save()
-            return redirect("/app/cursos/")
-
-    formulario_agregar = agregar_actividad()
-    contexto = {
-        "form": formulario_agregar
+        "actividades": actividad
     }
 
-    return  render(request, "AppAlonger/agregar_actividad.html", contexto)
-
-
-def buscar_actividad(request):
-    nombre = request.Get["nombre"]
-    cursos = Curso.objects.filter(nombre__icontains=nombre)
-    contexto = {
-        "cursos": cursos,
-        "form": buscar_actividad_form(),
-    }
-    return render(request, "AppAlonger/cursos.html", contexto)
+    return render(request, "AppAlonger/actividades.html", contexto)
 
 
 def show_html(request):
-    curso = Curso.objects.all()
-    contexto = {"curso": curso, "nombre": "Miguel"}
+    actividad = Actividad.objects.all()
+    contexto = {"Actividad": actividad,}
     return render(request, 'index.html', contexto)
 
 

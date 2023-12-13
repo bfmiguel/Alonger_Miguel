@@ -1,15 +1,14 @@
 
 
 from django.urls import path
-from AppAlonger.views import crear_curso, show_html, mostrar_cursos, agregar_actividad_form, buscar_actividad, \
-    lista_actividad
+from AppAlonger.views import show_html, lista_actividad, detalle_actividad, crear_actividad, actualizar_actividad, \
+    ver_actividad
 
 urlpatterns = [
-    path('agregar_curso/', crear_curso),
+    path('ver_actividad/', ver_actividad),
     path('show/', show_html),
-    path('cursos/', mostrar_cursos),
-    path('buscar/', buscar_actividad),
-    path('agregar_actividad/', agregar_actividad_form),
-    path('lista_actividad/', lista_actividad.as_view(), name="listas"),
-
+    path('actividad/lista', lista_actividad.as_view(), name="listas"),
+    path('detalle/<int:pk>', detalle_actividad.as_view(), name="detalle"),
+    path('crear/', crear_actividad.as_view(), name="crear"),
+    path('actualizar/<int:pk>', actualizar_actividad.as_view(), name="actualizar"),
 ]

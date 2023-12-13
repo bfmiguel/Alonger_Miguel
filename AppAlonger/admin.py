@@ -1,9 +1,6 @@
 from django.contrib import admin
 
-from AppAlonger.models import Curso, Estudiante, Profesor
-
+from AppAlonger.models import  Actividad
 # Register your models here.
 
-admin.site.register(Curso)
-admin.site.register(Estudiante)
-admin.site.register(Profesor)
+admin.site.register(Actividad)
