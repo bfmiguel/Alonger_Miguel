@@ -8,9 +8,9 @@ class Curso(models.Model):
     nombre= models.CharField(max_length=40)
     camada= models.IntegerField()
 
-    def __str__(self):
-        return f"Curso: {self.nombre}, Camada: {self.camada}"
-
+    """def __str__(self):
+        return f"Actividad: {self.nombre}, tipo: {self.tipo}, tipo: {self.tipo}"
+"""
 
 
 class Actividad(models.Model):
@@ -19,6 +19,6 @@ class Actividad(models.Model):
     empresa = models.CharField(max_length=40)
 
     def __str__(self):
-        return f"Actividad: {self.nombre}, tipo: {self.camada}, empresa: {self.empresa}"
+        return f"Actividad: {self.nombre}, tipo: {self.tipo}, tipo: {self.tipo}"
 
 

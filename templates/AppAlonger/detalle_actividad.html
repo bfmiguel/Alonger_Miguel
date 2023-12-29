@@ -2,6 +2,15 @@
 
 {% block cambio %}
 
+
+
+    <h6>la actividad realizada es {{actividad.nombre}} en la empresa {{ actividad.empresa }}</h6>
+    <a href="{% url 'listas' %}">Regresar</a>
+    <hr>
+
+{% endblock %}
+
+{#
 <p>La actividad es:  <b>{{Actividad.nombre}}</b> </p>
 <p> es de tipo: {{Actividad.tipo}}</p>
 <p>de la empresa: {{Actividad.empresa}} </p>
@@ -13,4 +22,6 @@
 
 
 
-{% endblock %}
+
+
+#}

@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from AppAlonger.models import  Actividad
+
+from AppAlonger.models import Actividad
+
 
 # Create your views here.
 
@@ -14,22 +16,25 @@ class detalle_actividad(DetailView):
     model = Actividad
     template_name = "AppAlonger/detalle_actividad.html"
 
-class crear_actividad(CreateView):
+
+# class CrearActividad(CreateView): debe estar en mayuscula
+class CrearActividad(CreateView):
     model = Actividad
     success_url = "/app/actividad/lista"
-    template_name = "/app/agregar_actividad.html"
-    fields = ["nombre", "tipo", "empresa"]
+    template_name = "AppAlonger/agregar_actividad.html"
+    fields = "__all__"
+    # fields = ["nombre", "tipo", "empresa"]
 
 
 class actualizar_actividad(UpdateView):
     model = Actividad
     success_url = "/app/actividad/lista"
-    template_name = "/app/agregar_actividad.html"
+    template_name = "AppAlonger/agregar_actividad.html"
     fields = ["nombre", "tipo", "empresa"]
 
 
 def ver_actividad(request):
-    actividad = Actividad.objects.all
+    actividad = Actividad.objects.all()
     contexto = {
         "actividades": actividad
     }
@@ -38,9 +43,6 @@ def ver_actividad(request):
 
 
 def show_html(request):
-    actividad = Actividad.objects.all()
-    contexto = {"Actividad": actividad,}
+    actividades = Actividad.objects.all()
+    contexto = {"actividades": actividades, }
     return render(request, 'index.html', contexto)
-
-
-

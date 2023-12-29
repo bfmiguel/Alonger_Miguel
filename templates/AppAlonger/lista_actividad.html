@@ -14,20 +14,22 @@
 <p>
     <a href="{% url 'crear' %}">Crear</a>
 </p>
-    {% for lista in object_list %}
-    <h6>Su actividad realizada fue: {{Actividad.nombre}} en la empresa {{Actividad.empresa}}</h6>
-    
+<div class="container">
+    <div class="row">
+        {% for actividad in object_list %}
 
-    <p>
-        <a href="{% url 'detalle' actividad.id %} ">Detalles</a>
-    </p>
+        <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+                <h3>{{actividad.nombre}}</h3>
+                <p class="lead mb-0">Actividad realizada en la empresa {{actividad.empresa}} </p>
+                <a href="{% url 'detalle' actividad.id %} ">Detalles</a>
+                <a href="{% url 'actualizar' actividad.id %} ">Actualizar</a>
+            </div>
+        </div>
 
-    <p>
-        <a href="{% url 'actualizar' Actividad.id %} ">Actualizar</a>
-    </p>
-    <hr>
-
-    {% endfor %}
-
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
