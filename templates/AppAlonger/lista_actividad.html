@@ -3,16 +3,17 @@
 {% block cambio %}
 
 <div>
-    <form action="/app/buscar" method="GET">
+    <form action="" method="GET">
 
         <input type="text" name="nombre">
 
-        <input type="submit" value="Buscar">
+        <!--<input type="submit" value="Buscar"> -->
     </form>
 </div>
 
 <p>
-    <a href="{% url 'crear' %}">Crear</a>
+    <a class="btn btn-primary" href="{% url 'crear' %}">Crear</a>
+    <a class="btn btn-primary" href="{% url 'listas' %}">Buscar</a>
 </p>
 <div class="container">
     <div class="row">

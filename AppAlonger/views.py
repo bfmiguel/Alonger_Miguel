@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.template.context_processors import request
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from AppAlonger.models import Actividad
@@ -31,6 +33,9 @@ class actualizar_actividad(UpdateView):
     success_url = "/app/actividad/lista"
     template_name = "AppAlonger/agregar_actividad.html"
     fields = ["nombre", "tipo", "empresa"]
+
+
+
 
 
 def ver_actividad(request):
