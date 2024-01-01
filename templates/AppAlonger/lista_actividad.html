@@ -15,6 +15,7 @@
     <a class="btn btn-primary" href="{% url 'crear' %}">Crear</a>
     <a class="btn btn-primary" href="{% url 'listas' %}">Buscar</a>
 </p>
+<hr>
 <div class="container">
     <div class="row">
         {% for actividad in object_list %}
@@ -22,7 +23,7 @@
         <div class="col-lg-4">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
-                <h3>{{actividad.nombre}}</h3>
+                <h1>{{actividad.nombre}}</h1>
                 <p class="lead mb-0">Actividad realizada en la empresa {{actividad.empresa}} </p>
                 <a href="{% url 'detalle' actividad.id %} ">Detalles</a>
                 <a href="{% url 'actualizar' actividad.id %} ">Actualizar</a>

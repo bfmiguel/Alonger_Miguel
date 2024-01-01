@@ -16,7 +16,11 @@ class Iluminacion(models.Model):
     cliente= models.CharField(max_length=40)
     yacimiento= models.CharField(max_length=40)
     equipo= models.CharField(max_length=40)
+    tipo = models.CharField(max_length=40)
 
+
+    def __str__(self):
+        return f"operacion: {self.operacion}, cliente: {self.cliente}, yacimiento: {self.yacimiento}, equipo: {self.equipo}, tipo: {self.tipo}"
 
 class Actividad(models.Model):
     nombre= models.CharField(max_length=40)

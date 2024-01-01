@@ -29,10 +29,17 @@ class CrearActividad(CreateView):
 
 class iluminacion(CreateView):
     model = Iluminacion
+    success_url = "/app/show/"
     template_name = "AppAlonger/iluminacion.html"
     fields = "__all__"
 
+def ver_iluminacion(request):
+    iluminacion = Iluminacion.objects.all()
+    contexto = {
+        "iluminaciones": iluminacion
+    }
 
+    return render(request, "AppAlonger/iluminacion_detalle.html", contexto)
 
 def alonger(request):
     contexto = {"Ahola" : "Nuestros servicios se adaptan a las necesidades y tamaño de nuestros clientes. Podemos ofrecer llevar a cabo todas las funciones de un Departamento de Seguridad e Higiene en el Trabajo en forma externa, suministrar profesionales que logren incrementar la dotación de HST de una organización, o proveer el desarrollo de actividades puntuales que contribuyan a la gestión HST de sus departamentos internos"
